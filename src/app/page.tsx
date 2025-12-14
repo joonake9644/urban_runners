@@ -1,69 +1,102 @@
 'use client';
 
-import { BrutalButton } from '@/components/brutal/BrutalButton';
-import { ConcreteTexture } from '@/components/brutal/ConcreteTexture';
-import { RunnerSilhouette } from '@/components/brutal/RunnerSilhouette';
+import Image from 'next/image';
+import { Activity, Flame, Sparkles } from 'lucide-react';
 
 export default function HomePage() {
+
   return (
-    <div className="relative min-h-screen bg-brutal-gray overflow-hidden">
-      {/* 콘크리트 텍스처 배경 */}
-      <ConcreteTexture />
-
-      {/* 메인 콘텐츠 */}
-      <div className="relative z-10 flex flex-col items-start justify-center min-h-screen px-6 md:px-12 lg:px-16">
-        {/* NO LIMITS - 우측 상단 */}
-        <div className="absolute top-8 right-8 md:top-12 md:right-12">
-          <p className="font-brutal text-2xl md:text-4xl font-black text-brutal-orange uppercase">
-            NO LIMITS
-          </p>
-        </div>
-
-        {/* URBAN RUNNERS 메인 타이틀 */}
-        <h1 className="font-brutal text-[4rem] md:text-[8rem] lg:text-[12rem] leading-none text-black uppercase font-black mb-4">
-          URBAN
-          <br />
-          RUNNERS
-        </h1>
-
-        {/* CONCRETE MILES / RAW SPEED */}
-        <div className="flex flex-col md:flex-row gap-2 md:gap-4 mb-2">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-1 bg-brutal-orange"></div>
-            <span className="font-brutal text-xl md:text-2xl font-black text-black uppercase">
-              CONCRETE MILES
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-1 bg-brutal-orange"></div>
-            <span className="font-brutal text-xl md:text-2xl font-black text-black uppercase">
-              RAW SPEED
-            </span>
-          </div>
-        </div>
-
-        {/* CTA 버튼들 */}
-        <div className="flex flex-col gap-4 mt-12 w-full md:w-auto">
-          <BrutalButton href="/join" variant="primary" size="lg" className="min-w-[200px]">
-            JOIN CREW
-          </BrutalButton>
-          <BrutalButton href="/about" variant="primary" size="md" className="min-w-[200px]">
-            ADVISORY
-          </BrutalButton>
-          <BrutalButton href="/about#facts" variant="primary" size="md" className="min-w-[200px]">
-            QUICK FACTS
-          </BrutalButton>
-          <BrutalButton href="/dashboard" variant="primary" size="md" className="min-w-[200px]">
-            STATISTICS
-          </BrutalButton>
-          <BrutalButton href="#contact" variant="primary" size="md" className="min-w-[200px]">
-            CONTACT US
-          </BrutalButton>
-        </div>
+    <main className="relative min-h-screen w-full overflow-hidden bg-black">
+      {/* 전체 배경: 스크린샷 PNG 유지 */}
+      <div className="absolute inset-0">
+        <Image
+          src="/screens/home.png"
+          alt="Urban Runners homepage full design"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
       </div>
+      <div className="absolute inset-0 bg-black/15" aria-hidden />
 
-      {/* 러너 실루엣 애니메이션 */}
-      <RunnerSilhouette />
-    </div>
+      {/* 벡터 레이어: 로고/아이콘/일러스트 역할 */}
+      <div className="relative z-10 flex min-h-screen flex-col justify-between px-6 py-8 md:px-10 lg:px-16">
+        <header className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <svg
+              aria-hidden
+              viewBox="0 0 120 40"
+              className="h-10 w-auto"
+              role="img"
+            >
+              <rect x="0" y="0" width="120" height="40" rx="8" fill="#0D0D0D" />
+              <path
+                d="M16 30 L10 10 L18 10 L22 22 L26 10 L34 10 L28 30 Z"
+                fill="#F9581E"
+              />
+              <text
+                x="42"
+                y="26"
+                fill="#F2F2F2"
+                fontFamily="Anton, sans-serif"
+                fontSize="16"
+                letterSpacing="1"
+              >
+                URBAN RUN
+              </text>
+            </svg>
+            <div className="text-sm font-semibold uppercase tracking-[0.18em] text-white">
+              Vector mark + PNG bg
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase text-white">
+              svg
+            </span>
+            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase text-white">
+              png
+            </span>
+            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase text-white">
+              match
+            </span>
+          </div>
+        </header>
+
+        <div className="flex flex-col gap-8 text-white drop-shadow-[0_10px_25px_rgba(0,0,0,0.45)] md:max-w-xl">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 backdrop-blur">
+              <Activity className="h-6 w-6 text-orange-300" />
+            </div>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-200">
+              Precision vector overlay
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 backdrop-blur">
+              <Flame className="h-6 w-6 text-orange-400" />
+            </div>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-100">
+              Background locked to PNG
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 backdrop-blur">
+              <Sparkles className="h-6 w-6 text-orange-200" />
+            </div>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-100">
+              Icons/illustrations remain SVG
+            </p>
+          </div>
+        </div>
+
+        <footer className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.16em] text-white/80">
+          <span className="rounded border border-white/20 px-3 py-1">png-bg</span>
+          <span className="rounded border border-white/20 px-3 py-1">svg-logo</span>
+          <span className="rounded border border-white/20 px-3 py-1">svg-icon</span>
+          <span className="rounded border border-white/20 px-3 py-1">overlay</span>
+        </footer>
+      </div>
+    </main>
   );
 }
