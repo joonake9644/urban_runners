@@ -1,0 +1,262 @@
+# Urban Runners 프로젝트 개발 규칙
+
+## 🎯 프로젝트 개요
+- **프로젝트명**: Urban Runners 러닝 크루 홈페이지
+- **디자인 컨셉**: 네오 브루탈리즘 (Neo-Brutalism)
+- **핵심 메시지**: "CONCRETE MILES, RAW SPEED"
+
+## 📋 필수 참조 문서
+1. **PRD**: `doc/PRD_Urban_Runners.md` - 제품 요구사항
+2. **TRD**: `doc/TRD_Urban_Runners.md` - 기술 요구사항
+3. **개발 계획**: `doc/DEVELOPMENT_PLAN.md` - 단계별 개발 계획
+4. **화면 디자인**: `public/screens/*.png` - 참조 화면
+
+## 🎨 디자인 시스템 규칙
+
+### 필수 준수 사항
+```yaml
+컬러 팔레트:
+  - Primary: #FF6B00 (brutal-orange)
+  - Secondary: #000000 (black)
+  - Background: #CCCCCC (brutal-gray)
+  - Accent Green: #00FF00
+  - Accent Blue: #00BFFF
+  - Accent Red: #FF0000
+
+타이포그래피:
+  - Font Family: Impact, 'Arial Black', sans-serif
+  - Font Weight: 900 (Black)
+  - Text Transform: UPPERCASE
+  - Letter Spacing: -0.02em
+
+테두리 & 그림자:
+  - Border: 4-6px solid black
+  - Border Radius: 0 (날카로운 모서리, 예외 허용)
+  - Box Shadow: 8px 8px 0 0 black
+
+레이아웃:
+  - 콘크리트 배경 텍스처 필수
+  - 러너 실루엣 애니메이션
+  - 계단식 레이아웃
+```
+
+## 💻 코드 작성 규칙
+
+### 1. TypeScript 규칙
+- ❌ `any` 타입 사용 금지
+- ✅ 모든 함수에 반환 타입 명시
+- ✅ Props 인터페이스 정의 필수
+- ✅ 엄격한 null 체크
+
+### 2. 컴포넌트 규칙
+- 하나의 컴포넌트는 하나의 책임
+- 100줄 이상 → 분할 고려
+- Props는 5개 이하 권장
+- 재사용성을 위해 공통 컴포넌트 우선 사용
+
+### 3. 재사용성 규칙
+- 3회 이상 사용되는 코드 → 컴포넌트/함수로 추출
+- 매직 넘버/문자열 → 상수로 정의 (`lib/constants.ts`)
+- 중복 스타일 → Tailwind 유틸리티 클래스
+
+### 4. 네이밍 규칙
+```typescript
+// 컴포넌트: PascalCase
+export function BrutalButton() {}
+
+// 함수: camelCase
+function calculatePace() {}
+
+// 상수: UPPER_SNAKE_CASE
+const MAX_RUNNING_DISTANCE = 42.195;
+
+// 타입/인터페이스: PascalCase
+interface UserStats {}
+type RunningLevel = 'beginner' | 'intermediate' | 'advanced';
+```
+
+## 📁 프로젝트 구조
+
+```
+src/
+├── app/
+│   ├── (auth)/          # 인증 페이지 (login, join)
+│   ├── (main)/          # 메인 페이지 (about, schedule, etc.)
+│   ├── (dashboard)/     # 보호된 페이지
+│   └── api/             # API 라우트
+├── components/
+│   ├── brutal/          # Brutalism 전용 컴포넌트
+│   ├── layout/          # 레이아웃 컴포넌트
+│   └── ui/              # shadcn/ui 컴포넌트
+├── lib/
+│   ├── supabase/        # Supabase 클라이언트
+│   ├── auth/            # 인증 관련
+│   ├── utils/           # 유틸리티 함수
+│   └── constants.ts     # 상수 정의
+└── types/               # TypeScript 타입
+```
+
+## 🔄 개발 프로세스
+
+### 각 작업 단계별 체크리스트
+```
+1. 사전 확인 (Pre-Development)
+   - [ ] DEVELOPMENT_PLAN.md에서 현재 단계 확인
+   - [ ] 요구사항 명확화 (PRD 참조)
+   - [ ] 디자인 참조 이미지 확인 (public/screens)
+   - [ ] 필요한 컴포넌트/API 파악
+
+2. 개발 (Development)
+   - [ ] 공통 컴포넌트 우선 사용
+   - [ ] 디자인 시스템 준수
+   - [ ] TypeScript 규칙 준수
+
+3. 코드 오류 수정 (Bug Fixing)
+   - [ ] TypeScript 에러 수정
+   - [ ] ESLint 경고 해결
+   - [ ] 런타임 에러 디버깅
+
+4. 자체 테스트 (Self Testing)
+   - [ ] 기능 동작 확인
+   - [ ] 반응형 확인 (375px, 768px, 1440px)
+   - [ ] 브라우저 테스트 (Chrome, Firefox, Safari)
+
+5. 보고 (Report)
+   - [ ] 완료된 기능 체크리스트 업데이트
+   - [ ] 발견된 이슈 문서화
+
+6. 다음 단계 진행
+   - [ ] DEVELOPMENT_PLAN.md에서 다음 작업 확인
+```
+
+## 🎯 페이지별 우선순위
+
+### 🔴 최우선 (Phase 3 우선 구현)
+1. HOME - 메인 랜딩 페이지
+2. JOIN CREW - 회원가입
+3. LOGIN - 로그인
+
+### 🟠 높음
+4. ABOUT - 크루 소개
+5. SCHEDULE - 러닝 일정
+6. DASHBOARD - 사용자 대시보드
+
+### 🟡 중간
+7. MEMBERSHIP - 멤버십 정보
+8. ROUTES - 러닝 코스
+9. LOADING - 로딩 화면
+
+### 🟢 낮음
+10. GALLERY - 갤러리
+11. FEEDBACK - 피드백 시스템
+
+## 🚨 절대 금지 사항
+
+1. ❌ 디자인 시스템 무시 (색상, 폰트, 테두리 임의 변경)
+2. ❌ public/screens 이미지와 다른 디자인 구현
+3. ❌ any 타입 사용
+4. ❌ 환경변수를 코드에 하드코딩
+5. ❌ .env.local 파일 Git 커밋
+6. ❌ 중복 코드 방치 (3회 이상 반복 시 추출 필수)
+
+## ✅ 필수 체크 항목
+
+### 컴포넌트 작성 시
+- [ ] Brutal 디자인 시스템 적용 (굵은 테두리, 그림자)
+- [ ] 반응형 디자인 구현 (mobile-first)
+- [ ] TypeScript 타입 정의
+- [ ] Props 문서화 (JSDoc)
+
+### API 작성 시
+- [ ] 에러 핸들링
+- [ ] Supabase RLS 정책 확인
+- [ ] 응답 타입 정의
+- [ ] 인증 검증 (필요 시)
+
+### 페이지 작성 시
+- [ ] public/screens 이미지와 100% 일치
+- [ ] 메타데이터 설정 (title, description)
+- [ ] Loading 상태 처리
+- [ ] Error 상태 처리
+
+## 🔐 보안 규칙
+
+1. 환경변수 사용
+   ```typescript
+   // ✅ 올바른 방법
+   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+
+   // ❌ 절대 금지
+   const apiKey = "12345-abcde-67890";
+   ```
+
+2. Supabase RLS 정책 필수
+   - 모든 테이블에 RLS 활성화
+   - 사용자는 자신의 데이터만 접근
+
+3. OAuth 리디렉션 URI 검증
+   - 개발: http://localhost:3000
+   - 프로덕션: 배포된 도메인
+
+## 📊 성능 기준
+
+- First Contentful Paint: < 1.5s
+- Time to Interactive: < 3.5s
+- Lighthouse Score: 90+
+- 이미지: WebP 포맷 우선, lazy loading
+
+## 🧪 테스트 규칙
+
+### 수동 테스트 필수 항목
+1. 반응형 (375px, 768px, 1440px)
+2. 다크모드 지원 (추후)
+3. 키보드 네비게이션
+4. 스크린 리더 호환성
+
+## 📝 커밋 메시지 규칙
+
+```
+feat: 새로운 기능 추가
+fix: 버그 수정
+style: 디자인/스타일 수정
+refactor: 리팩토링
+docs: 문서 수정
+test: 테스트 추가/수정
+chore: 빌드, 설정 파일 수정
+```
+
+예시:
+```
+feat: HOME 페이지 BrutalButton 컴포넌트 구현
+fix: Login 페이지 OAuth 리디렉션 오류 수정
+style: Dashboard StatCard 그림자 효과 수정
+```
+
+## 🔗 참조 링크
+
+- [Next.js Docs](https://nextjs.org/docs)
+- [Supabase Docs](https://supabase.com/docs)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
+- [shadcn/ui](https://ui.shadcn.com/)
+
+## ⚠️ 주의사항
+
+1. **항상 DEVELOPMENT_PLAN.md 참조**
+   - 현재 Phase 확인
+   - 다음 작업 항목 확인
+   - 완료 기준 체크
+
+2. **디자인 일관성 유지**
+   - 모든 페이지는 public/screens 이미지 기준
+   - 공통 컴포넌트 우선 사용
+   - 임의로 스타일 변경 금지
+
+3. **코드 품질 관리**
+   - ESLint 경고 즉시 해결
+   - TypeScript strict 모드 준수
+   - 중복 코드 즉시 리팩토링
+
+---
+
+**작성일**: 2024-12-14
+**버전**: 1.0
