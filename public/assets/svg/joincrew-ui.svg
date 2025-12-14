@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="1143" viewBox="0 0 2048 1143">
+  <defs>
+    <filter id="dropShadow" x="-200" y="-200" width="2448" height="1543" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <filter id="softShadow" x="-200" y="-200" width="2448" height="1543" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.28"/>
+    </filter>
+    <linearGradient id="orangeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff7a1a"/>
+      <stop offset="1" stop-color="#d95a0a"/>
+    </linearGradient>
+    <linearGradient id="inputGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f1f1f1"/>
+    </linearGradient>
+  </defs>
+  <g id="headings" filter="url(#dropShadow)">
+    <text x="80" y="160" font-family="Impact, Haettenschweiler, 'Arial Black', sans-serif" font-size="150" font-weight="900" letter-spacing="2" fill="#0b0b0b">JOIN CREW</text>
+    <text x="80" y="280" font-family="Impact, Haettenschweiler, 'Arial Black', sans-serif" font-size="120" font-weight="900" letter-spacing="2" fill="#0b0b0b">SIGN UP</text>
+  </g>
+
+  <g class="field" filter="url(#softShadow)">
+    <rect x="120" y="340" width="820" height="120" rx="10" fill="rgba(255,255,255,0.08)" stroke="#0b0b0b" stroke-width="10"/>
+    <text x="160" y="418" font-family="Impact, Haettenschweiler, 'Arial Black', sans-serif" font-size="56" font-weight="900" fill="#0b0b0b">NAME</text>
+    <rect x="380" y="372.0" width="530" height="56" rx="4" fill="url(#inputGrad)" stroke="#111111" stroke-width="6"/>
+  </g>
+
+  <g class="field" filter="url(#softShadow)">
+    <rect x="1060" y="340" width="820" height="120" rx="10" fill="rgba(255,255,255,0.08)" stroke="#0b0b0b" stroke-width="10"/>
+    <text x="1100" y="418" font-family="Impact, Haettenschweiler, 'Arial Black', sans-serif" font-size="56" font-weight="900" fill="#0b0b0b">EMAIL</text>
+    <rect x="1320" y="372.0" width="530" height="56" rx="4" fill="url(#inputGrad)" stroke="#111111" stroke-width="6"/>
+  </g>
+
+  <g class="field" filter="url(#softShadow)">
+    <rect x="120" y="500" width="820" height="120" rx="10" fill="rgba(255,255,255,0.08)" stroke="#0b0b0b" stroke-width="10"/>
+    <text x="160" y="578" font-family="Impact, Haettenschweiler, 'Arial Black', sans-serif" font-size="56" font-weight="900" fill="#0b0b0b">PASSWORD</text>
+    <rect x="380" y="532.0" width="530" height="56" rx="4" fill="url(#inputGrad)" stroke="#111111" stroke-width="6"/>
+  </g>
+
+  <g class="field" filter="url(#softShadow)">
+    <rect x="1060" y="500" width="820" height="120" rx="10" fill="rgba(255,255,255,0.08)" stroke="#0b0b0b" stroke-width="10"/>
+    <text x="1100" y="578" font-family="Impact, Haettenschweiler, 'Arial Black', sans-serif" font-size="56" font-weight="900" fill="#0b0b0b">RUNNING LEVEL</text>
+    <rect x="1320" y="532.0" width="530" height="56" rx="4" fill="url(#inputGrad)" stroke="#111111" stroke-width="6"/>
+  </g>
+  <g id="cta" filter="url(#dropShadow)">
+    <rect x="1090" y="690" width="840" height="170" rx="8" fill="url(#orangeGrad)" stroke="#0b0b0b" stroke-width="14"/>
+    <rect x="1120" y="720" width="780" height="110" rx="4" fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="10"/>
+    <text x="1185" y="810" font-family="Impact, Haettenschweiler, 'Arial Black', sans-serif" font-size="96" font-weight="900" letter-spacing="1" fill="#0b0b0b">CREATE ACCOUNT</text>
+  </g>
+
+</svg>

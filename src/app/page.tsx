@@ -1,101 +1,151 @@
 'use client';
 
 import Image from 'next/image';
-import { Activity, Flame, Sparkles } from 'lucide-react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function HomePage() {
+  const buttons = [
+    { href: '/join', label: 'JOIN CREW', svg: '/assets/svg/btn_join_crew.svg', delay: 0.1 },
+    { href: '/about', label: 'ADVISORY', svg: '/assets/svg/btn_advisory.svg', delay: 0.2 },
+    { href: '/about#facts', label: 'QUICK FACTS', svg: '/assets/svg/btn_quick_facts.svg', delay: 0.3 },
+    { href: '/dashboard', label: 'STATISTICS', svg: '/assets/svg/btn_statistics.svg', delay: 0.4 },
+    { href: '#contact', label: 'CONTACT US', svg: '/assets/svg/btn_contact_us.svg', delay: 0.5 },
+  ];
 
   return (
     <main className="relative min-h-screen w-full overflow-hidden bg-black">
-      {/* 전체 배경: 스크린샷 PNG 유지 */}
+      {/* 레이어 1: 콘크리트 배경 */}
       <div className="absolute inset-0">
         <Image
           src="/screens/home.png"
-          alt="Urban Runners homepage full design"
+          alt="Concrete background"
           fill
           priority
           sizes="100vw"
           className="object-cover"
         />
       </div>
-      <div className="absolute inset-0 bg-black/15" aria-hidden />
 
-      {/* 벡터 레이어: 로고/아이콘/일러스트 역할 */}
-      <div className="relative z-10 flex min-h-screen flex-col justify-between px-6 py-8 md:px-10 lg:px-16">
-        <header className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <svg
-              aria-hidden
-              viewBox="0 0 120 40"
-              className="h-10 w-auto"
-              role="img"
+      {/* 레이어 2: UI 오버레이 SVG - 애니메이션 */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="absolute inset-0"
+      >
+        <Image
+          src="/assets/svg/overlay-ui-excluding-people.svg"
+          alt="UI overlay"
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+      </motion.div>
+
+      {/* 레이어 3: 화려한 인터랙티브 버튼들 */}
+      <div className="relative z-50 min-h-screen pt-20">
+        <div className="absolute left-6 md:left-12 lg:left-16 bottom-20 md:bottom-32 lg:bottom-36 flex flex-col gap-4">
+          {buttons.map((button, index) => (
+            <motion.div
+              key={button.href}
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{
+                delay: button.delay,
+                type: 'spring',
+                stiffness: 100,
+                damping: 15,
+              }}
             >
-              <rect x="0" y="0" width="120" height="40" rx="8" fill="#0D0D0D" />
-              <path
-                d="M16 30 L10 10 L18 10 L22 22 L26 10 L34 10 L28 30 Z"
-                fill="#F9581E"
-              />
-              <text
-                x="42"
-                y="26"
-                fill="#F2F2F2"
-                fontFamily="Anton, sans-serif"
-                fontSize="16"
-                letterSpacing="1"
+              <Link
+                href={button.href}
+                className="group relative block w-40 md:w-52 h-14 md:h-16"
               >
-                URBAN RUN
-              </text>
-            </svg>
-            <div className="text-sm font-semibold uppercase tracking-[0.18em] text-white">
-              Vector mark + PNG bg
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase text-white">
-              svg
-            </span>
-            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase text-white">
-              png
-            </span>
-            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase text-white">
-              match
-            </span>
-          </div>
-        </header>
+                {/* SVG 버튼 이미지 */}
+                <motion.div
+                  whileHover={{
+                    scale: 1.1,
+                    rotate: 2,
+                    x: 5,
+                    y: -5,
+                  }}
+                  whileTap={{
+                    scale: 0.95,
+                    rotate: -2,
+                  }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                  className="relative w-full h-full"
+                >
+                  <Image
+                    src={button.svg}
+                    alt={button.label}
+                    fill
+                    className="object-contain drop-shadow-[0_0_10px_rgba(245,158,11,0.5)] group-hover:drop-shadow-[0_0_20px_rgba(245,158,11,0.8)] transition-all duration-300"
+                  />
 
-        <div className="flex flex-col gap-8 text-white drop-shadow-[0_10px_25px_rgba(0,0,0,0.45)] md:max-w-xl">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 backdrop-blur">
-              <Activity className="h-6 w-6 text-orange-300" />
-            </div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-200">
-              Precision vector overlay
-            </p>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 backdrop-blur">
-              <Flame className="h-6 w-6 text-orange-400" />
-            </div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-100">
-              Background locked to PNG
-            </p>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 backdrop-blur">
-              <Sparkles className="h-6 w-6 text-orange-200" />
-            </div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-100">
-              Icons/illustrations remain SVG
-            </p>
-          </div>
+                  {/* Glow 효과 */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-transparent opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
+
+                  {/* 반짝이는 효과 */}
+                  <motion.div
+                    className="absolute inset-0 bg-white/20"
+                    animate={{
+                      opacity: [0, 0.3, 0],
+                      scale: [1, 1.1, 1],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: index * 0.3,
+                    }}
+                  />
+                </motion.div>
+
+                {/* 호버 시 나타나는 화살표 */}
+                <motion.div
+                  initial={{ x: -10, opacity: 0 }}
+                  whileHover={{ x: 0, opacity: 1 }}
+                  className="absolute -right-8 top-1/2 -translate-y-1/2"
+                >
+                  <span className="text-orange-500 text-2xl font-black">→</span>
+                </motion.div>
+              </Link>
+            </motion.div>
+          ))}
         </div>
 
-        <footer className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.16em] text-white/80">
-          <span className="rounded border border-white/20 px-3 py-1">png-bg</span>
-          <span className="rounded border border-white/20 px-3 py-1">svg-logo</span>
-          <span className="rounded border border-white/20 px-3 py-1">svg-icon</span>
-          <span className="rounded border border-white/20 px-3 py-1">overlay</span>
-        </footer>
+        {/* 우측 상단 NO LIMITS 텍스트 - 애니메이션 */}
+        <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.3, type: 'spring', stiffness: 100 }}
+          className="absolute top-24 right-8 md:right-16"
+        >
+          <motion.div
+            animate={{
+              scale: [1, 1.05, 1],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          >
+            <Image
+              src="/assets/svg/text-no-limits.svg"
+              alt="No Limits"
+              width={180}
+              height={60}
+              className="drop-shadow-[0_0_15px_rgba(245,158,11,0.6)]"
+            />
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* 파티클/그래인 효과 */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')] opacity-20" />
       </div>
     </main>
   );

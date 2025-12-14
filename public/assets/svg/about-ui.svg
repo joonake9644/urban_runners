@@ -1,0 +1,130 @@
+<!--
+파일명: public/assets/svg/about-ui.svg
+설명: about.png 배경 위 오버레이(배경 제외)
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <filter id="hardShadow">
+      <feDropShadow dx="0" dy="10" stdDeviation="0" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- ================= TITLE ================= -->
+  <g filter="url(#hardShadow)">
+    <text
+      x="140"
+      y="430"
+      font-family="Oswald, Impact, sans-serif"
+      font-weight="900"
+      font-size="190"
+      fill="#111111"
+      letter-spacing="2"
+    >
+      ABOUT
+    </text>
+
+    <text
+      x="140"
+      y="600"
+      font-family="Oswald, Impact, sans-serif"
+      font-weight="900"
+      font-size="190"
+      fill="#111111"
+      letter-spacing="2"
+    >
+      CREW
+    </text>
+  </g>
+
+  <!-- ================= INFO BARS ================= -->
+  <g transform="translate(140,650)">
+    <!-- EST. 2020 -->
+    <g>
+      <rect width="260" height="56" fill="#D6D6D6" />
+      <text
+        x="130"
+        y="38"
+        text-anchor="middle"
+        font-family="Oswald, sans-serif"
+        font-weight="800"
+        font-size="32"
+        fill="#FF7A00"
+      >
+        EST. 2020
+      </text>
+    </g>
+
+    <!-- 248 MEMBERS -->
+    <g transform="translate(280,0)">
+      <rect width="300" height="56" fill="#D6D6D6" />
+      <text
+        x="150"
+        y="38"
+        text-anchor="middle"
+        font-family="Oswald, sans-serif"
+        font-weight="800"
+        font-size="32"
+        fill="#FF7A00"
+      >
+        248 MEMBERS
+      </text>
+    </g>
+
+    <!-- STEEL COMMITMENT -->
+    <g transform="translate(600,0)">
+      <rect width="360" height="56" fill="#D6D6D6" />
+      <text
+        x="180"
+        y="38"
+        text-anchor="middle"
+        font-family="Oswald, sans-serif"
+        font-weight="800"
+        font-size="32"
+        fill="#FF7A00"
+      >
+        STEEL COMMITMENT
+      </text>
+    </g>
+  </g>
+
+  <!-- ================= RUNNER SILHOUETTE (VECTOR) ================= -->
+  <g transform="translate(1080,360) scale(1.35)" fill="#111111" filter="url(#hardShadow)">
+    <circle cx="40" cy="18" r="16" />
+    <path
+      d="
+        M40 36
+        L54 72
+        L90 72
+        L74 98
+        L104 142
+        L86 150
+        L62 108
+        L50 154
+        L28 154
+        L40 106
+        L14 126
+        L4 110
+        L36 88
+        L26 60
+        Z
+      "
+    />
+    <path
+      d="
+        M58 86
+        C74 70 98 64 118 70
+        L112 90
+        C98 86 84 90 70 102
+        Z
+      "
+    />
+  </g>
+
+  <!-- ================= FOOTER META ================= -->
+  <g transform="translate(1200,930)" fill="#111111" font-family="Oswald, sans-serif">
+    <rect x="0" y="-46" rx="4" ry="4" width="360" height="52" fill="#E5E5E5" filter="url(#hardShadow)" />
+    <text x="20" y="-12" font-size="26" font-weight="800">
+      WE RUN THE CITY // NO LIMITS
+    </text>
+  </g>
+</svg>
