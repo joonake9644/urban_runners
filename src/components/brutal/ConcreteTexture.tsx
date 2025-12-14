@@ -2,7 +2,7 @@
 
 export function ConcreteTexture() {
   return (
-    <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden opacity-20">
+    <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden opacity-40">
       <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern
