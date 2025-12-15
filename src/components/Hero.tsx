@@ -37,26 +37,21 @@ export default function Hero({ onJoinClick }: HeroProps) {
         ></motion.div>
       </div>
 
-      {/* Orange Dynamic Stripes - Animated from left */}
-      <div className="absolute left-0 top-[26%] w-full z-10">
-        <motion.div 
-          className="h-8 bg-[#ff6b35] mb-4 shadow-[0_8px_30px_rgba(255,107,53,0.5)]"
-          initial={{ width: 0 }}
-          animate={{ width: '100%' }}
-          transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-        ></motion.div>
-        <motion.div 
-          className="h-4 bg-[#ff6b35] mb-3 shadow-[0_6px_20px_rgba(255,107,53,0.4)]"
-          initial={{ width: 0 }}
-          animate={{ width: '70%' }}
-          transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
-        ></motion.div>
-        <motion.div 
-          className="h-2 bg-[#ff6b35] shadow-[0_4px_15px_rgba(255,107,53,0.3)]"
-          initial={{ width: 0 }}
-          animate={{ width: '50%' }}
-          transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
-        ></motion.div>
+      {/* Orange "SEOUL URBAN CREW" Bar - Top */}
+      <div className="absolute left-0 top-[100px] w-full z-10">
+        <motion.div
+          className="flex items-center gap-2 px-6 lg:px-12"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <div className="bg-[#ff6b35] px-6 py-3 border-2 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)]">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-black rounded-full"></div>
+              <span className="text-black uppercase tracking-[0.3em] font-bold text-sm">SEOUL URBAN CREW</span>
+            </div>
+          </div>
+        </motion.div>
       </div>
 
       {/* Male Runner - Left Side - Animated from left */}
@@ -129,24 +124,30 @@ export default function Hero({ onJoinClick }: HeroProps) {
             <span className="text-black uppercase tracking-[0.3em]">SEOUL URBAN CREW</span>
           </motion.div>
 
-          {/* Main Title - Brutalist Style - Animated from left */}
-          <motion.h1 
-            className="mb-8 leading-[0.85] relative"
-            style={{ fontSize: 'clamp(4.5rem, 13vw, 10rem)' }}
+          {/* Main Title - Brutalist Style - EXTRA LARGE - Animated from left */}
+          <motion.h1
+            className="mb-12 leading-[0.85] relative"
+            style={{
+              fontSize: 'clamp(8rem, 20vw, 22rem)',
+              fontFamily: 'Impact, "Arial Black", sans-serif',
+              fontWeight: 900,
+              letterSpacing: '-0.02em'
+            }}
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <motion.span 
-              className="block text-white drop-shadow-[8px_8px_0px_rgba(0,0,0,0.9)]"
+            <motion.span
+              className="block text-white drop-shadow-[12px_12px_0px_rgba(0,0,0,0.95)]"
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
               URBAN
             </motion.span>
-            <motion.span 
-              className="block text-[#ff6b35] drop-shadow-[8px_8px_0px_rgba(0,0,0,0.95)] [-webkit-text-stroke:2px_black]"
+            <motion.span
+              className="block text-[#ff6b35] drop-shadow-[12px_12px_0px_rgba(0,0,0,0.98)]"
+              style={{ WebkitTextStroke: '3px black' }}
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.9 }}
