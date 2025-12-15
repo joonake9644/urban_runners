@@ -36,16 +36,16 @@ export default function Gallery() {
   ];
 
   return (
-    <section id="gallery" className="relative py-32 bg-[#2d2d2d] concrete-texture">
+    <section id="gallery" className="relative py-20 bg-black concrete-texture">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ff6b35] to-transparent"></div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <div className="mb-20">
-          <div className="inline-flex items-center gap-2 bg-[#ff6b35] px-6 py-2 mb-6 text-sm uppercase tracking-wider">
-            Gallery
+          <div className="inline-flex items-center gap-2 bg-[#ff6b35] px-6 py-2 mb-6 text-sm uppercase tracking-wider font-bold border-2 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)]">
+            <span className="text-black">GALLERY</span>
           </div>
-          <h2 className="text-[#f5f5f5] mb-6">
+          <h2 className="text-[#f5f5f5] mb-6 text-5xl md:text-6xl lg:text-7xl font-black leading-tight" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
             크루의
             <br />
             <span className="text-[#ff6b35]">순간들</span>
