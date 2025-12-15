@@ -44,7 +44,7 @@ export default function Hero({ onJoinClick }: HeroProps) {
 
       {/* Male Runner - Left Side - Animated from left - GROUND LEVEL */}
       <motion.div
-        className="absolute left-[3%] bottom-[8%] w-[450px] h-[450px] z-25"
+        className="absolute left-[3%] bottom-[8%] w-[450px] h-[450px] z-[35]"
         initial={{ x: -500, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
@@ -72,7 +72,7 @@ export default function Hero({ onJoinClick }: HeroProps) {
 
       {/* Female Runner - Right Side - Animated from right - GROUND LEVEL */}
       <motion.div
-        className="absolute right-[8%] bottom-[8%] w-[550px] h-[550px] z-20"
+        className="absolute right-[8%] bottom-[8%] w-[550px] h-[550px] z-[35]"
         initial={{ x: 500, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1, delay: 1, ease: "easeOut" }}
