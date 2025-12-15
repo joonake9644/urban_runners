@@ -55,9 +55,9 @@ export default function SubmitRoute({ onClose }: SubmitRouteProps) {
 
         {/* Header */}
         <div className="bg-[#ff6b35] p-8 border-b-4 border-black sticky top-0 z-10">
-          <h2 className="text-black uppercase tracking-[0.3em] text-center">루트 제출</h2>
+          <h2 className="text-black uppercase tracking-[0.2em] text-center text-4xl md:text-5xl font-black" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>루트 제출</h2>
           <div className="h-1 w-20 bg-black mx-auto mt-4"></div>
-          <p className="text-black/70 text-center mt-4 text-sm">
+          <p className="text-black/70 text-center mt-4 text-base">
             새로운 러닝 루트를 크루와 공유하세요
           </p>
         </div>

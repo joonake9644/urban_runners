@@ -1,11 +1,23 @@
 import { MapPin, TrendingUp, Clock, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-interface RoutesProps {
-  onSubmitRouteClick?: () => void;
+interface Route {
+  name: string;
+  distance: string;
+  difficulty: string;
+  elevation: string;
+  time: string;
+  rating: number;
+  description: string;
+  highlights: string[];
 }
 
-export default function Routes({ onSubmitRouteClick }: RoutesProps) {
+interface RoutesProps {
+  onSubmitRouteClick?: () => void;
+  onViewRouteDetails?: (route: Route) => void;
+}
+
+export default function Routes({ onSubmitRouteClick, onViewRouteDetails }: RoutesProps) {
   const routes = [
     {
       name: '한강 여의도 순환',
@@ -177,7 +189,10 @@ export default function Routes({ onSubmitRouteClick }: RoutesProps) {
 
               {/* Footer */}
               <div className="px-6 pb-6">
-                <button className="w-full bg-[#2d2d2d] hover:bg-[#ff6b35] text-[#f5f5f5] py-3 transition-colors uppercase tracking-wider text-sm border border-[#3f3f3f] hover:border-[#ff6b35]">
+                <button
+                  onClick={() => onViewRouteDetails?.(route)}
+                  className="w-full bg-[#2d2d2d] hover:bg-[#ff6b35] text-[#f5f5f5] py-3 transition-colors uppercase tracking-wider text-sm border border-[#3f3f3f] hover:border-[#ff6b35]"
+                >
                   View Route Details
                 </button>
               </div>

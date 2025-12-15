@@ -1,6 +1,10 @@
 import { Calendar, Clock, MapPin, Users } from 'lucide-react';
 
-export default function Schedule() {
+interface ScheduleProps {
+  onJoinClick?: () => void;
+}
+
+export default function Schedule({ onJoinClick }: ScheduleProps) {
   const runs = [
     {
       day: 'Monday',
@@ -144,7 +148,10 @@ export default function Schedule() {
           <p className="text-[#a3a3a3] mb-6">
             크루에 가입하고 모든 러닝 세션에 참여하세요
           </p>
-          <button className="bg-[#ff6b35] hover:bg-[#e55a2b] text-white px-10 py-4 transition-colors uppercase tracking-wide">
+          <button
+            onClick={onJoinClick}
+            className="bg-[#ff6b35] hover:bg-[#e55a2b] text-white px-10 py-4 transition-colors uppercase tracking-wide"
+          >
             Join the Crew
           </button>
         </div>

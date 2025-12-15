@@ -11,11 +11,24 @@ import Footer from '@/components/Footer';
 import Login from '@/components/Login';
 import Signup from '@/components/Signup';
 import SubmitRoute from '@/components/SubmitRoute';
+import RouteDetails from '@/components/RouteDetails';
+
+interface Route {
+  name: string;
+  distance: string;
+  difficulty: string;
+  elevation: string;
+  time: string;
+  rating: number;
+  description: string;
+  highlights: string[];
+}
 
 export default function HomePage() {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
   const [showSubmitRoute, setShowSubmitRoute] = useState(false);
+  const [selectedRoute, setSelectedRoute] = useState<Route | null>(null);
 
   return (
     <div className="min-h-screen bg-[#1a1a1a]">
@@ -26,8 +39,11 @@ export default function HomePage() {
       <main>
         <Hero onJoinClick={() => setShowSignup(true)} />
         <About />
-        <Schedule />
-        <Routes onSubmitRouteClick={() => setShowSubmitRoute(true)} />
+        <Schedule onJoinClick={() => setShowSignup(true)} />
+        <Routes
+          onSubmitRouteClick={() => setShowSubmitRoute(true)}
+          onViewRouteDetails={(route) => setSelectedRoute(route)}
+        />
         <Gallery />
       </main>
       <Footer />
@@ -55,6 +71,13 @@ export default function HomePage() {
 
       {showSubmitRoute && (
         <SubmitRoute onClose={() => setShowSubmitRoute(false)} />
+      )}
+
+      {selectedRoute && (
+        <RouteDetails
+          route={selectedRoute}
+          onClose={() => setSelectedRoute(null)}
+        />
       )}
     </div>
   );
