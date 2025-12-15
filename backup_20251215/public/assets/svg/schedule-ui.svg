@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="1143" viewBox="0 0 2048 1143">
+  <defs>
+    <filter id="shadow" x="-300" y="-300" width="2648" height="1743" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <linearGradient id="orangeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff7a1a"/>
+      <stop offset="1" stop-color="#d95a0a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- TITLES -->
+  <g id="titles" filter="url(#shadow)">
+    <text x="90" y="350" font-family="Impact, Haettenschweiler, 'Arial Black', sans-serif" font-size="190" font-weight="900" fill="#0b0b0b">SCHEDULE</text>
+    <text x="90" y="545" font-family="Impact, Haettenschweiler, 'Arial Black', sans-serif" font-size="190" font-weight="900" fill="#0b0b0b">SCHEDULE</text>
+  </g>
+
+  <!-- DAY TAGS (moved to avoid overlap with titles) -->
+  <g id="tags" filter="url(#shadow)">
+    <!-- MONWED : moved right/up so it never touches the top title -->
+    <rect x="860" y="155" rx="6" ry="6" width="190" height="54" fill="url(#orangeGrad)" stroke="#0b0b0b" stroke-width="6"/>
+    <text x="885" y="193" font-family="Arial Black, Arial, sans-serif" font-size="34" fill="#0b0b0b">MONWED</text>
+
+    <!-- THUSAT : moved right/down so it doesn't touch CONSISTENCY -->
+    <rect x="900" y="660" rx="6" ry="6" width="190" height="54" fill="url(#orangeGrad)" stroke="#0b0b0b" stroke-width="6"/>
+    <text x="925" y="698" font-family="Arial Black, Arial, sans-serif" font-size="34" fill="#0b0b0b">THUSAT</text>
+  </g>
+
+  <!-- CONSISTENCY -->
+  <g id="consistency" filter="url(#shadow)">
+    <text x="90" y="905" font-family="Impact, Haettenschweiler, 'Arial Black', sans-serif" font-size="170" font-weight="900" fill="#0b0b0b">CONSISTENCY</text>
+  </g>
+
+  <!-- ORANGE BOX (nudged to avoid any intersection with labels) -->
+  <g id="orangeBox" filter="url(#shadow)">
+    <rect x="1140" y="315" width="320" height="260" fill="url(#orangeGrad)" stroke="#0b0b0b" stroke-width="10"/>
+    <rect x="1170" y="345" width="260" height="200" fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="8"/>
+  </g>
+</svg>

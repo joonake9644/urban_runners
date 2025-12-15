@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback Overlay Preview</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; width: 100%; height: 100%; }
+    body { background: #000; }
+    .stage { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
+    .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <img class="bg" src="../screens/feedback.png" alt="feedback background" />
+    <img class="overlay" src="../assets/svg/feedback-ui-embossed.svg" alt="feedback overlay" />
+  </div>
+</body>
+</html>
