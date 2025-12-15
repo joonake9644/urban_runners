@@ -41,26 +41,10 @@ export default function Hero({ onJoinClick }: HeroProps) {
         ></motion.div>
       </motion.div>
 
-      {/* Orange "SEOUL URBAN CREW" Bar - Top */}
-      <div className="absolute left-0 top-[100px] w-full z-10">
-        <motion.div
-          className="flex items-center gap-2 px-6 lg:px-12"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <div className="bg-[#ff6b35] px-6 py-3 border-2 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)]">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-black rounded-full"></div>
-              <span className="text-black uppercase tracking-[0.3em] font-bold text-sm">SEOUL URBAN CREW</span>
-            </div>
-          </div>
-        </motion.div>
-      </div>
 
-      {/* Male Runner - Left Side - Animated from left - LARGER */}
+      {/* Male Runner - Left Side - Animated from left - GROUND LEVEL */}
       <motion.div
-        className="absolute left-[3%] top-[28%] w-[550px] h-[550px] z-25"
+        className="absolute left-[3%] bottom-[8%] w-[450px] h-[450px] z-25"
         initial={{ x: -500, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
@@ -86,9 +70,9 @@ export default function Hero({ onJoinClick }: HeroProps) {
         </div>
       </motion.div>
 
-      {/* Female Runner - Right Side - Animated from right - MOVED LEFT */}
+      {/* Female Runner - Right Side - Animated from right - GROUND LEVEL */}
       <motion.div
-        className="absolute right-[10%] top-[28%] w-[650px] h-[650px] z-20"
+        className="absolute right-[8%] bottom-[8%] w-[550px] h-[550px] z-20"
         initial={{ x: 500, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1, delay: 1, ease: "easeOut" }}
@@ -128,11 +112,11 @@ export default function Hero({ onJoinClick }: HeroProps) {
             <span className="text-black uppercase tracking-[0.3em]">SEOUL URBAN CREW</span>
           </motion.div>
 
-          {/* Main Title - Brutalist Style - EXTRA LARGE - Animated from left */}
+          {/* Main Title - Brutalist Style - Adjusted Size - Animated from left */}
           <motion.h1
             className="mb-12 leading-[0.85] relative"
             style={{
-              fontSize: 'clamp(8rem, 20vw, 22rem)',
+              fontSize: 'clamp(5rem, 15vw, 14rem)',
               fontFamily: 'Impact, "Arial Black", sans-serif',
               fontWeight: 900,
               letterSpacing: '-0.02em'

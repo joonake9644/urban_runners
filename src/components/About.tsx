@@ -25,7 +25,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="relative py-32 bg-[#2d2d2d] concrete-texture overflow-hidden">
+    <section id="about" className="relative py-32 bg-[#0a0a0a] concrete-texture overflow-hidden">
       {/* Background elements */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#ff6b35] to-transparent"></div>
       
@@ -42,10 +42,10 @@ export default function About() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <div className="mb-20">
-          <div className="inline-flex items-center gap-2 bg-[#ff6b35] px-6 py-2 mb-6 text-sm uppercase tracking-wider">
-            About Crew
+          <div className="inline-flex items-center gap-2 bg-[#ff6b35] px-6 py-3 mb-8 text-sm uppercase tracking-wider font-bold border-2 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)]">
+            <span className="text-black">ABOUT CREW</span>
           </div>
-          <h2 className="text-[#f5f5f5] mb-6">
+          <h2 className="text-[#f5f5f5] mb-8 text-6xl md:text-7xl lg:text-8xl font-black leading-tight" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
             우리는
             <br />
             <span className="text-[#ff6b35]">도시 러너</span>입니다
