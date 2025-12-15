@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface HeroProps {
   onJoinClick?: () => void;
@@ -10,12 +11,17 @@ export default function Hero({ onJoinClick }: HeroProps) {
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Concrete Background */}
       <div className="absolute inset-0">
-        <motion.div
-          className="w-full h-full bg-gradient-to-br from-zinc-800 via-zinc-900 to-black"
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+        <Image
+          src="/new/home1.webp"
+          alt="Concrete Background"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: 'center' }}
         />
+        {/* Grain texture overlay */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWx0ZXI9InVybCgjYSkiIG9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')] opacity-40" />
         {/* Subtle gradient overlay */}
         <motion.div
           className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-transparent"
