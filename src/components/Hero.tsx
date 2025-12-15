@@ -9,8 +9,12 @@ interface HeroProps {
 export default function Hero({ onJoinClick }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Concrete Background */}
-      <div className="absolute inset-0">
+      {/* Concrete Background with Interactive Movement */}
+      <motion.div
+        className="absolute inset-0"
+        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <Image
           src="/new/home1.webp"
           alt="Concrete Background"
@@ -35,7 +39,7 @@ export default function Hero({ onJoinClick }: HeroProps) {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         ></motion.div>
-      </div>
+      </motion.div>
 
       {/* Orange "SEOUL URBAN CREW" Bar - Top */}
       <div className="absolute left-0 top-[100px] w-full z-10">
@@ -54,9 +58,9 @@ export default function Hero({ onJoinClick }: HeroProps) {
         </motion.div>
       </div>
 
-      {/* Male Runner - Left Side - Animated from left */}
-      <motion.div 
-        className="absolute left-[5%] top-[30%] w-[480px] h-[480px] z-25"
+      {/* Male Runner - Left Side - Animated from left - LARGER */}
+      <motion.div
+        className="absolute left-[3%] top-[28%] w-[550px] h-[550px] z-25"
         initial={{ x: -500, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
@@ -82,9 +86,9 @@ export default function Hero({ onJoinClick }: HeroProps) {
         </div>
       </motion.div>
 
-      {/* Female Runner - Right Side - Animated from right */}
-      <motion.div 
-        className="absolute right-[20%] top-[28%] w-[650px] h-[650px] z-20"
+      {/* Female Runner - Right Side - Animated from right - MOVED LEFT */}
+      <motion.div
+        className="absolute right-[10%] top-[28%] w-[650px] h-[650px] z-20"
         initial={{ x: 500, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1, delay: 1, ease: "easeOut" }}
@@ -145,15 +149,44 @@ export default function Hero({ onJoinClick }: HeroProps) {
             >
               URBAN
             </motion.span>
-            <motion.span
-              className="block text-[#ff6b35] drop-shadow-[12px_12px_0px_rgba(0,0,0,0.98)]"
-              style={{ WebkitTextStroke: '3px black' }}
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.9 }}
-            >
-              RUNNERS
-            </motion.span>
+
+            {/* RUNNERS with Orange Stripes */}
+            <div className="relative">
+              <motion.span
+                className="block text-[#ff6b35] drop-shadow-[12px_12px_0px_rgba(0,0,0,0.98)]"
+                style={{ WebkitTextStroke: '3px black' }}
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.9 }}
+              >
+                RUNNERS
+              </motion.span>
+
+              {/* Horizontal Orange Stripes Through Text */}
+              <div className="absolute inset-0 pointer-events-none z-[-1]">
+                <motion.div
+                  className="absolute left-0 right-0 h-8 bg-[#ff6b35] shadow-[0_8px_30px_rgba(255,107,53,0.5)]"
+                  style={{ top: '35%' }}
+                  initial={{ width: 0 }}
+                  animate={{ width: '100%' }}
+                  transition={{ duration: 0.8, delay: 1.1, ease: "easeOut" }}
+                />
+                <motion.div
+                  className="absolute left-0 right-0 h-4 bg-[#ff6b35] shadow-[0_6px_20px_rgba(255,107,53,0.4)]"
+                  style={{ top: '50%' }}
+                  initial={{ width: 0 }}
+                  animate={{ width: '70%' }}
+                  transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
+                />
+                <motion.div
+                  className="absolute left-0 right-0 h-2 bg-[#ff6b35] shadow-[0_4px_15px_rgba(255,107,53,0.3)]"
+                  style={{ top: '65%' }}
+                  initial={{ width: 0 }}
+                  animate={{ width: '50%' }}
+                  transition={{ duration: 0.8, delay: 1.3, ease: "easeOut" }}
+                />
+              </div>
+            </div>
           </motion.h1>
 
           {/* Accent Divider - Animated */}
@@ -183,24 +216,33 @@ export default function Hero({ onJoinClick }: HeroProps) {
             ></motion.div>
           </motion.div>
 
-          {/* Feature Lines - Sequential animation */}
+          {/* Feature Lines - Sequential animation with Interactive Background Movement */}
           <div className="space-y-5 mb-16">
             {[
               { text: 'CONCRETE JUNGLE', delay: 1.3 },
               { text: 'LIMITLESS SPEED', delay: 1.5 },
               { text: 'RAW ENERGY', delay: 1.7 }
             ].map((item, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
-                className="flex items-center gap-6 group"
+                className="flex items-center gap-6 group cursor-pointer"
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: item.delay }}
+                whileHover={{ x: 8 }}
               >
-                <div className="w-1.5 h-10 bg-[#ff6b35] group-hover:h-14 transition-all"></div>
-                <h3 className="text-white uppercase tracking-[0.25em] drop-shadow-[2px_2px_4px_rgba(0,0,0,0.8)]">
+                <motion.div
+                  className="w-1.5 h-10 bg-[#ff6b35]"
+                  whileHover={{ height: 56 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.h3
+                  className="text-white uppercase tracking-[0.25em] drop-shadow-[2px_2px_4px_rgba(0,0,0,0.8)] text-xl font-bold"
+                  whileHover={{ letterSpacing: '0.3em' }}
+                  transition={{ duration: 0.3 }}
+                >
                   {item.text}
-                </h3>
+                </motion.h3>
               </motion.div>
             ))}
           </div>
