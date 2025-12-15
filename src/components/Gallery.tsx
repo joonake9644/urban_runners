@@ -1,35 +1,36 @@
-import { Instagram, Image as ImageIcon } from 'lucide-react';
+import { Instagram } from 'lucide-react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function Gallery() {
-  // Mock gallery images - in production these would come from a backend
   const galleryItems = [
     {
-      type: 'image',
+      image: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&q=80',
       caption: '새벽 한강 러닝',
       date: '2024.12.10'
     },
     {
-      type: 'image',
+      image: 'https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=800&q=80',
       caption: '북악스카이웨이 정복',
       date: '2024.12.08'
     },
     {
-      type: 'image',
+      image: 'https://images.unsplash.com/photo-1483721310020-03333e577078?w=800&q=80',
       caption: '크루 멤버 모임',
       date: '2024.12.05'
     },
     {
-      type: 'image',
+      image: 'https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?w=800&q=80',
       caption: '마라톤 완주 기념',
       date: '2024.12.01'
     },
     {
-      type: 'image',
+      image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&q=80',
       caption: '남산 야간 러닝',
       date: '2024.11.28'
     },
     {
-      type: 'image',
+      image: 'https://images.unsplash.com/photo-1485727749690-d091e8284ef3?w=800&q=80',
       caption: '훈련 후 스트레칭',
       date: '2024.11.25'
     }
@@ -60,38 +61,78 @@ export default function Gallery() {
         {/* Gallery Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-16">
           {galleryItems.map((item, index) => (
-            <div 
+            <motion.div
               key={index}
-              className="group relative aspect-square bg-[#1a1a1a] border-2 border-[#3f3f3f] hover:border-[#ff6b35] transition-all duration-300 overflow-hidden"
+              className="group relative aspect-square bg-[#1a1a1a] border-2 border-[#3f3f3f] hover:border-[#ff6b35] transition-all duration-300 overflow-hidden cursor-pointer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
             >
-              {/* Placeholder for image */}
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#2d2d2d] to-[#1a1a1a]">
-                <ImageIcon className="w-16 h-16 text-[#3f3f3f] group-hover:text-[#ff6b35] transition-colors" />
-              </div>
+              {/* Image */}
+              <motion.div
+                className="absolute inset-0"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <Image
+                  src={item.image}
+                  alt={item.caption}
+                  fill
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </motion.div>
 
-              {/* Runner silhouette overlay */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-20 transition-opacity">
-                <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
-                  <circle cx="60" cy="25" r="15" fill="#000" />
-                  <path d="M60 40 L60 90" stroke="#000" strokeWidth="10" strokeLinecap="round" />
-                  <path d="M60 55 L40 75" stroke="#000" strokeWidth="8" strokeLinecap="round" />
-                  <path d="M60 55 L80 70" stroke="#000" strokeWidth="8" strokeLinecap="round" />
-                  <path d="M60 90 L45 120" stroke="#000" strokeWidth="9" strokeLinecap="round" />
-                  <path d="M60 90 L75 125" stroke="#000" strokeWidth="9" strokeLinecap="round" />
-                </svg>
-              </div>
+              {/* Dark overlay for readability */}
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300"></div>
 
               {/* Overlay with info */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                <div className="text-[#f5f5f5] mb-2">{item.caption}</div>
-                <div className="text-[#a3a3a3] text-sm">{item.date}</div>
-              </div>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6"
+                initial={{ y: 20 }}
+                whileHover={{ y: 0 }}
+              >
+                <motion.div
+                  className="text-[#f5f5f5] mb-2 font-bold"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileHover={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                >
+                  {item.caption}
+                </motion.div>
+                <motion.div
+                  className="text-[#a3a3a3] text-sm"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileHover={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 }}
+                >
+                  {item.date}
+                </motion.div>
+              </motion.div>
 
-              {/* Corner accent */}
-              <div className="absolute top-0 right-0 w-12 h-12 bg-[#ff6b35] opacity-0 group-hover:opacity-100 transition-opacity" 
-                   style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 0)' }}>
-              </div>
-            </div>
+              {/* Corner accent with animation */}
+              <motion.div
+                className="absolute top-0 right-0 w-12 h-12 bg-[#ff6b35]"
+                style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 0)' }}
+                initial={{ opacity: 0, scale: 0 }}
+                whileHover={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+              </motion.div>
+
+              {/* Pulse effect on hover */}
+              <motion.div
+                className="absolute inset-0 border-2 border-[#ff6b35]"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileHover={{
+                  opacity: [0, 0.5, 0],
+                  scale: 1.05,
+                  transition: { duration: 0.6 }
+                }}
+              ></motion.div>
+            </motion.div>
           ))}
         </div>
 
